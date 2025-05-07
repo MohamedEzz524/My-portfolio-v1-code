@@ -1,0 +1,106 @@
+.input-field,
+.textarea-field {
+  display: block;
+  width: 100%;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 1.125rem;
+  border: 2px solid #444444;
+  transition: var(--transition-port);
+  color: #ffff;
+  padding: 15px 20px;
+  position: relative;
+  @media (max-width: 1600px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 1200px) {
+    border-width: 2px;
+    font-size: 0.9735rem;
+  }
+  @media (max-width: 993px) {
+    font-size: 0.875rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 0.8125rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 0.75rem;
+    padding: 12px 10px;
+  }
+  &::placeholder {
+    color: #cccccc;
+    font-style: italic;
+    @media (max-width: 1600px) {
+      font-size: 1rem;
+    }
+    @media (max-width: 768px) {
+      font-size: 0.9375rem;
+    }
+    @media (max-width: 450px) {
+      font-size: 0.875rem;
+    }
+  }
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-bottom-color: #ff3e3e; /* Bold red underline */
+    box-shadow: 0px 2px 4px rgba(255, 62, 62, 0.5); /* Subtle red glow */
+    outline: none;
+  }
+
+  &:valid {
+    border-color: var(--valid-color);
+    box-shadow: 0px 0px 8px rgba(76, 175, 80, 0.8);
+    @media (max-width: 768px) {
+      box-shadow: none;
+    }
+  }
+  @media (max-width: 993px) {
+    font-size: 1rem;
+  }
+}
+
+.textarea-field {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-input:focus-within {
+  position: relative;
+  &::before {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 30px;
+    top: calc(50% - 15px);
+    font-size: 1.2rem;
+    background-color: transparent;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-port);
+    z-index: 5;
+    @media (max-width: 768px) {
+      width: 20px;
+      height: 20px;
+      right: 20px;
+      top: calc(50% - 10px);
+      font-size: 1rem;
+    }
+  }
+  &:has(input:valid) {
+    &::before {
+      content: "✔";
+      color: var(--valid-color);
+      border: 1px solid var(--valid-color);
+    }
+  }
+  &:has(input:invalid) {
+    &::before {
+      content: "✗";
+      color: var(--invalid-color);
+      border: 1px solid var(--invalid-color);
+    }
+  }
+}

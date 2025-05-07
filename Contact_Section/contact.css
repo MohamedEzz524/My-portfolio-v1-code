@@ -1,0 +1,217 @@
+#contact {
+  padding-bottom: 0px;
+  border: none;
+  position: relative;
+  @media (max-width: 768px) {
+    padding-bottom: 0;
+  }
+}
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  @media (max-width: 993px) {
+    flex-direction: column;
+  }
+}
+.contact-feedback-container {
+  padding: 120px 0 150px;
+  position: relative;
+  border-top: 1px solid rgba(192, 132, 252, 0.2);
+  @media (max-width: 993px) {
+    padding: 50px 0;
+  }
+}
+.contact-overlay {
+  position: absolute;
+  left: -60px;
+  height: 100%;
+  width: 100vw;
+  top: 0;
+  background-image: url(../assets/images/p.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-attachment: fixed; */
+  filter: brightness(30%);
+  z-index: -99;
+  @media (max-width: 1600px) {
+    left: -30px;
+  }
+  @media (max-width: 768px) {
+    left: 0px;
+  }
+}
+/* 3 4 5 7 8 10 */
+.contact-input {
+  width: 50%;
+  position: relative;
+  @media (max-width: 993px) {
+    width: 100%;
+    margin-top: 100px;
+  }
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+}
+
+.contact-input .send-message,
+.contact-info .get-in,
+.feedback-rate .feedback-title,
+.rate .rate-title {
+  width: fit-content;
+  font-size: 1.2rem;
+  font-size: clamp(1.4rem, 1.5vw + 0.5rem, 2rem);
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  position: relative;
+  &:before {
+    position: absolute;
+    content: "";
+    width: 30%;
+    height: 2px;
+    left: 0;
+    bottom: -5px;
+    background-color: var(--purple-color);
+  }
+  @media (max-width: 993px) {
+    margin: 0 auto 30px;
+  }
+}
+
+.contact-input .send-btn {
+  display: block;
+  width: 100%;
+  margin: 20px auto 15px;
+  background-color: var(--purple-color);
+  font-size: 1.125rem;
+  cursor: pointer;
+  color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 0;
+  transition: var(--transition-port);
+  &:hover {
+    background-color: var(--purple-neon);
+  }
+  &:active {
+    background-color: var(--purple-neon);
+    animation: send-bounce 0.3s ease-out;
+    transition-delay: 0.8s;
+  }
+  @media (max-width: 1200px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 450px) {
+    font-size: 0.9375rem;
+    padding: 12px 0;
+  }
+}
+
+@keyframes send-bounce {
+  0% {
+    transform: translateY(0); /* Start at original position */
+  }
+  50% {
+    transform: translateY(5px); /* Move slightly down */
+  }
+}
+
+/* Contact Info */
+.contact-info {
+  width: 30%;
+  & .my-contact-info {
+    position: relative;
+    color: #ffffff;
+    font-size: 1.125rem;
+    font-size: clamp(0.875rem, 0.9vw + 0.2rem, 1.125rem);
+    line-height: 1.5;
+    margin-top: 30px;
+    @media (max-width: 993px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+  & .my-links {
+    display: flex;
+    width: 50%;
+    margin-top: 60px;
+    @media (max-width: 993px) {
+      justify-content: center;
+      margin: 10px auto 0;
+      padding: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
+  }
+  @media (max-width: 993px) {
+    width: 100%;
+    margin: 50px auto;
+  }
+}
+
+/* feedback-rate */
+.feedback-rate {
+  margin-top: 40px;
+  padding: 30px 0;
+  color: #f5f5f5;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-top: 3px solid;
+  border-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1) 20%,
+    var(--purple-color),
+    rgba(0, 0, 0, 0.1) 80%
+  );
+  border-image-slice: 1;
+  @media (max-width: 993px) {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  @media (max-width: 768px) {
+    border-width: 1px;
+    padding: 20px;
+  }
+}
+.feedback-speech {
+  width: 50%;
+  font-family: "outfit";
+  position: relative;
+  color: #f5f5f5;
+  font-size: 1.125rem;
+  font-size: clamp(0.875rem, 0.9vw + 0.4rem, 1.25rem);
+  letter-spacing: 1px;
+  line-height: 1.333;
+  text-wrap: balance;
+  @media (max-width: 993px) {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 768px) {
+    letter-spacing: 0px;
+    padding: 20px;
+  }
+}
+
+.rate {
+  width: 30%;
+  font-size: 1.125rem;
+  @media (max-width: 993px) {
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+}
+
+/* Emojis container */
+.emojis-container {
+  /* width: fit-content; */
+  display: flex;
+  margin-top: 25px;
+}
+/*  */

@@ -1,0 +1,14 @@
+.component-overlay {
+  position: absolute;
+  left: -60px;
+  bottom: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: -9;
+  @media (max-width: 1600px) {
+    left: -30px;
+  }
+  @media (max-width: 768px) {
+    left: 0px;
+  }
+}

@@ -1,0 +1,193 @@
+.memory-game {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 10px;
+
+  & h1 {
+    color: var(--neon-color);
+    font-family: var(--font-display);
+    letter-spacing: 0.5px;
+    font-size: clamp(1.2rem, 2vw + 0.5rem, 2.5rem);
+    margin-bottom: 20px;
+  }
+
+  & .board {
+    position: relative;
+    display: flex;
+    font-family: var(--font-body);
+    font-style: italic;
+    justify-content: space-between;
+    width: 60%;
+    box-shadow: 9px 9px 9px rgba(45, 30, 45, 0.1), -3px -3px 5px #3a2258;
+    padding: 10px 15px;
+    font-size: 1.25rem;
+    font-size: clamp(0.9rem, 0.9vw + 0.4rem, 1.1rem);
+    border-radius: 5px;
+    letter-spacing: 1px;
+    color: #aaa;
+    font-weight: bold;
+    margin-bottom: 10px;
+    & .left span,
+    & .right span {
+      color: #e2d1ff;
+      font-weight: normal;
+    }
+    @media (max-width: 1200px) {
+      padding: 10px;
+    }
+    & .right {
+      margin-right: 20px;
+    }
+  }
+}
+/* Game Body */
+.game-grid {
+  width: 40%;
+  display: grid;
+  margin-top: 10px;
+  justify-content: center;
+  grid-template-columns: repeat(4, minmax(90px, 1fr));
+  place-items: center;
+  gap: 15px;
+  @media (max-width: 1200px) {
+    width: 100%;
+    grid-template-columns: repeat(4, 140px);
+    grid-template-rows: repeat(4, 100px);
+    padding: 10px 0;
+  }
+
+  & .game-block {
+    height: 90px;
+    width: 90px;
+    position: relative;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: var(--transition-port);
+    box-shadow: var(--shadow-out);
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    @media (max-width: 1200px) {
+      width: 100px;
+      height: 100px;
+    }
+
+    :hover {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+    & .face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      &.front {
+        background-color: #3a2258;
+        line-height: 140px;
+        transition: var(--transition-port);
+        &::before {
+          content: "?";
+          color: #e2d1ff;
+          font-size: clamp(2rem, 2.5vw + 0.5rem, 4rem);
+          font-weight: bold;
+        }
+      }
+      &.back {
+        background-color: #e2d1ff;
+        transform: rotateY(180deg);
+        transition: var(--transition-port);
+        & img {
+          width: 60px;
+          height: 60px;
+          @media (max-width: 1200px) {
+            width: 100px;
+            height: 100px;
+          }
+        }
+      }
+    }
+    &.flipped {
+      pointer-events: none;
+      box-shadow: none;
+
+      & .front {
+        transform: rotateY(180deg);
+      }
+      & .back {
+        transform: rotateY(0deg);
+      }
+    }
+  }
+}
+
+/* Result */
+.memory-result {
+  font-family: "outfit";
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  align-content: center;
+  & .result {
+    position: relative;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: var(--transition-port);
+    &.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  & span {
+    color: #00d8ff;
+  }
+  & p {
+    font-size: 3rem;
+    @media (max-width: 1600px) {
+      font-size: 2.5rem;
+    }
+    @media (max-width: 1200px) {
+      font-size: 2rem;
+    }
+  }
+}
+
+.memory-result .restart,
+.board .shuffle {
+  margin: auto;
+  margin-top: 50px;
+  font-size: 1.5rem;
+  border: none;
+  background-color: var(--purple-color);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 30px;
+  cursor: pointer;
+  @media (max-width: 1600px) {
+    font-size: 1.25rem;
+  }
+  @media (max-width: 1200px) {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
+  &:hover {
+    background-color: var(--purple-neon);
+  }
+}
+.board .shuffle {
+  position: absolute;
+  margin: 0;
+  right: -10px;
+  top: 50%;
+  transform: translate(100%, -50%);
+}

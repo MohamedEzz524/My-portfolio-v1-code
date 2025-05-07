@@ -1,0 +1,277 @@
+nav {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 0 60px;
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    135deg,
+    #0a0612 0%,
+    #2e1b4e 30%,
+    #6a3093 70%,
+    #c084fc 100%
+  );
+  box-shadow: 0 0 25px rgba(192, 132, 252, 0.6),
+    0 0 50px rgba(106, 48, 147, 0.3);
+  border-bottom: 1px solid rgba(192, 132, 252, 0.3);
+  z-index: 1000;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #6a3093, transparent);
+    animation: flow 2s linear infinite;
+    pointer-events: none;
+    @media (max-width: 450px) {
+      animation: none;
+    }
+  }
+  @media (max-width: 1600px) {
+    padding: 0px 30px;
+  }
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
+}
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes flow {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+nav ul {
+  font-family: var(--outfit-font);
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  @media (min-width: 1920px) {
+    justify-content: space-around;
+  }
+  & li:not(.me) {
+    background-color: transparent;
+    display: inline-flex;
+    align-content: center;
+    height: 100%;
+    & .li {
+      display: inline-block;
+      height: 50%;
+      margin: auto;
+      font-size: clamp(0.75rem, 0.7vw + 0.2rem, 1.125rem);
+      font-weight: bold;
+      padding: 0 15px;
+      align-content: center;
+      color: #ddd;
+      letter-spacing: 1px;
+      transition: var(--transition-port);
+      border-radius: 5px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0%;
+        height: 2px;
+        background: linear-gradient(90deg, #00f7ff, var(--purple-neon));
+        box-shadow: 0 0 5px var(--neon-color);
+        transition: width 0.4s ease;
+        border-radius: 10px;
+      }
+
+      &:hover {
+        color: #00f7ff;
+        text-shadow: 0 0 5px #00f7ff, 0 0 10px var(--neon-color),
+          0 0 20px var(--neon-color), 0 0 30px var(--neon-color);
+        &::after {
+          width: 100%;
+        }
+      }
+      &.active {
+        pointer-events: none;
+        color: var(--neon-color);
+        box-shadow: inset 0 0 10px #00ffff;
+        background-color: transparent;
+        font-weight: 700;
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+    & .hire {
+      height: auto;
+      margin: auto;
+      padding: 8px 25px;
+      font-size: clamp(1rem, 0.9vw + 0.3rem, 1.5rem);
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #ff00aa, var(--purple-color), #00f7ff);
+      background-size: 400% 400%;
+      box-shadow: 0 0 10 0 20px #ff00aa, 0 0 40px #ff0066;
+      border-radius: 50px;
+      will-change: background-position;
+      animation: gradientShift 4s ease infinite;
+      transition: var(--transition-port);
+      &:hover,
+      &:active {
+        box-shadow: 0 0 25px rgba(240, 0, 240, 0.6),
+          0 0 35px rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+  & li.me {
+    align-content: center;
+    text-align: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    color: #f5f5f5;
+    @media (max-width: 1600px) {
+      font-size: 0.8125rem;
+    }
+    @media (max-width: 990px) {
+      display: none;
+    }
+    & .up {
+      padding: 5px;
+      & span {
+        font-weight: bold;
+        color: var(--main-color);
+      }
+    }
+    & .down {
+      color: #888;
+    }
+  }
+}
+
+nav .logo {
+  font-family: var(--font-logo);
+  background-color: transparent;
+  font-size: clamp(0.9rem, 0.9vw + 0.5rem, 1.5rem);
+  line-height: 1.33;
+  font-weight: bold;
+  height: 100%;
+  align-content: center;
+  letter-spacing: 0px;
+  cursor: pointer;
+  padding: 0;
+  & a {
+    color: #fff;
+    text-shadow: 0 0 15px #ff00ff;
+  }
+  & .logo-mo {
+    color: #00f7ff;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    border-bottom: 2px solid #ff00ff;
+  }
+  & span.slash {
+    color: #ff00ff;
+  }
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+  width: fit-content;
+  padding: 0 10px;
+  align-content: center;
+  height: 100%;
+}
+.dropdown-toggle {
+  position: relative;
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+}
+.dropdown-toggle span {
+  display: block;
+  margin: 4px 0;
+  position: relative;
+  width: 40px;
+  height: 4px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  transition: var(--transition-port);
+  @media (max-width: 450px) {
+    height: 3px;
+    width: 30px;
+  }
+}
+
+.dropdown-toggle:hover span,
+.dropdown-toggle:has(.active) span {
+  background: #00e5ff;
+  box-shadow: 0 0 5px #00e5ff;
+  &:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  &:nth-child(2) {
+    opacity: 0;
+  }
+  &:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+}
+
+.dropdown-menu {
+  display: none;
+  position: fixed;
+  background: #252525;
+  top: 60px;
+  left: 0px;
+  width: 100vw;
+  text-align: left;
+  z-index: 100;
+  background-color: rgba(106, 48, 147, 0.3);
+  transition: var(--transition-port);
+  & a {
+    color: #f5f5f5;
+    display: block;
+    position: relative;
+    padding: 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(245, 245, 245, 0.1);
+    &:last-of-type {
+      border: none;
+    }
+    &:hover {
+      background: rgba(192, 132, 252, 0.4);
+    }
+  }
+}
+.dropdown-toggle:hover .dropdown-menu,
+.dropdown-menu.active {
+  display: block;
+  animation: fadeInBottom 0.3s ease-out;
+}

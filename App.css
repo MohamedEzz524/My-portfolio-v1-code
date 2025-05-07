@@ -1,0 +1,203 @@
+:root {
+  --scrollbar-width: 0px; /* Default */
+  --main-letter-spacing: 2px;
+  --main-transition: 0.3s;
+  --main-color: #00d8ff;
+  --neon-color: #00f7ff;
+  --purple-color: #6e00ff;
+  --secondary-color: #2c2c2c;
+  --pinky-color: #ff00a2;
+  --arrow-color: #00e5ff;
+  --slash-color: #ff2929;
+  --purple-neon: #c084fc;
+  --purple-soft: #e2d1ff;
+  --purple-text: #9d9dff;
+  --purple-dark: #3a2258;
+  --purple-bg: #1a1a2e;
+  --pink-neon: #d946ef;
+  --pink-color: #ff00cc;
+  --soft-blue: #60a5fa;
+  --dark-blue: #2b1f7a;
+  --main-dark-textColor: #999;
+  --transition-port: all 0.5s ease;
+  --valid-color: #4caf50;
+  --invalid-color: #ff3e3e;
+  --main-shadow: 0 0 15px rgba(130, 88, 255, 0.2);
+  --second-shadow: 0 0 20px rgba(163, 113, 255, 0.4);
+  --shadow-in: 12px 12px 12px rgba(0, 0, 0, 0.1), -10px -10px 10px #000 inset;
+  --shadow-out: 9px 9px 9px rgba(0, 0, 0, 0.1), -7px -7px 7px #000;
+}
+
+@supports (scrollbar-width: thin) {
+  :root {
+    --scrollbar-width: 16px; /* Typical scrollbar width */
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+ul {
+  list-style: none;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.App {
+  font-family: "Roboto", sans-serif;
+  padding: 0px 60px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.section-app {
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-top: 50px;
+  scroll-margin-top: 60px; /* for native anchor tag*/
+  border-bottom: 2px solid;
+  border-image: linear-gradient(
+    to right,
+    transparent 20%,
+    var(--slash-color),
+    transparent 80%
+  );
+  border-image-slice: 1;
+  @media (max-width: 768px) {
+    padding-top: 20px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .App {
+    padding: 0px 30px;
+  }
+}
+@media (max-width: 768px) {
+  .App {
+    padding: 0px;
+  }
+}
+
+@keyframes fadeInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes glow-radius {
+  25% {
+    border-radius: 30% 50% 35% 25%;
+  }
+  50% {
+    border-radius: 35% 40% 50% 45%;
+  }
+  70% {
+    border-radius: 45% 30% 25% 50%;
+  }
+}
+
+/*Motion*/
+/* Optimize all motion elements */
+.motion-section {
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .motion-section {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .motion-section[motion] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Mobile-specific tweaks */
+@media (max-width: 768px) {
+  [data-framer-motion] {
+    --animation-duration: 0.2s !important; /* Faster on mobile */
+  }
+}

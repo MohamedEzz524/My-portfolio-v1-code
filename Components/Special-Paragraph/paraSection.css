@@ -1,0 +1,23 @@
+.section-para {
+  color: #f0e5ff;
+  width: 90%;
+  margin: 20px auto;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-size: clamp(0.685rem, 0.9vw + 0.3rem, 1.2rem);
+  text-shadow: 0 0 5px rgba(192, 132, 252, 0.2);
+  line-height: 1.33;
+  transition: 0.5s;
+  letter-spacing: 0.5px;
+  padding: 10px 0;
+  background: linear-gradient(to bottom, #0a0612, #1a1029);
+  border-left: 3px solid #c084fc;
+  border-right: 3px solid #c084fc;
+  box-shadow: 0 0 30px rgba(192, 132, 252, 0.1);
+  padding: 1.2rem;
+  @media (max-width: 450px) {
+    border: none;
+    border-radius: 4px;
+  }
+}

@@ -1,0 +1,23 @@
+.arrow-scroll {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: transparent;
+  color: #00e5ff;
+  cursor: pointer;
+  z-index: 1000;
+  transition: var(--transition-port);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px); /* Optional: creates frosted glass effect */
+  @media (max-width: 1200px) {
+    display: none;
+  }
+  &:hover {
+    color: #aaa;
+    .glow-container span.glow {
+      box-shadow: 5px 5px 15px rgba(var(--neon-color) 0.4),
+        0 15px 30px rgba(var(--neon-color), 0.5);
+      opacity: 0.5;
+    }
+  }
+}
