@@ -1,0 +1,44 @@
+useEffect(() => {
+  const handleScroll = () => {
+    const homeElement = document.getElementById("Home");
+    const homeVisible = homeElement?.getBoundingClientRect()?.top >= 0;
+
+    setIsVisible(!homeVisible);
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
+
+const handleClick = () => {
+  const homeElement = document.getElementById("Home");
+  if (homeElement) {
+    homeElement.scrollIntoView({ behavior: "smooth" });
+  }
+};
+/*
+const homeElement = document.getElementById('Home'); This fetches the HTML element with the id="Home". It's targeting the section you want to monitor (in this case, the "Home" section).
+
+homeElement?.getBoundingClientRect()?.top >= 0;
+
+homeElement.getBoundingClientRect() gives an object containing the size and position of the Home element relative to the viewport (visible area of the page).
+
+The .top property tells us the distance from the top of the viewport to the top edge of the Home element.
+
+The >= 0 condition checks if the top edge of the Home element is at or above the top boundary of the viewport, meaning the "Home" section is visible or partially visible.
+
+The ?. (optional chaining operator) ensures that if homeElement is null (e.g., if the element with id="Home" does not exist), the code won’t throw an error.
+
+setIsVisible(!homeVisible);
+
+homeVisible is a boolean value (true if the "Home" section is visible, false otherwise).
+
+!homeVisible inverts this value. If the "Home" section is visible, it will set isVisible to false, and if the "Home" section is not visible, it will set isVisible to true.
+
+setIsVisible() is a state-updating function (from React’s useState), which updates the component’s state. When isVisible changes, React will re-render the component, showing or hiding the back-to-home button as needed.
+*/
+/*
+font-size: clamp(1.8rem, calc(7vw + 10px), 5rem) // min,preferred,max >> use preferred value as long as min and max not reach & +10px to maintain zoom 
+padding : min(5rem,8%) // dynamicllay change padding basing on which is the min
+
